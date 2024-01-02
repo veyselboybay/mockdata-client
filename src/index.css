@@ -1,15 +1,75 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.home-container {
+    padding-top: 10vh;
+    padding-left: 10vw;
+}
+
+.home-brand-text {
+    font-size: xxx-large;
+    font-weight: 500;
+}
+
+.home-brand-text-two {
+    font-size: x-large;
+    font-family: monospace;
+}
+
+.home-brand-text-three {
+    padding-top: 25px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.home-button-one {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 4px 15px;
+    /* background-color: rgba(0, 0, 255, 0.192); */
+    border: 2px solid rgba(0, 0, 255, 0.192);
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s ease-in;
+}
+
+.home-button-one:hover {
+    background-color: rgba(0, 0, 255, 0.192);
+}
+
+.home-button-two {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 15px;
+    background-color: rgba(144, 238, 144, 0.404);
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
 .doc-sidebar {
     height: 85vh;
     border-right: 1px solid lightgray;
     padding-top: 10px;
+    margin-top: 25px;
+    font-size: 15px;
 }
 
 .doc-main {
-    padding-top: 10px;
-    height: 90vh;
-    width: 50vw;
+    padding-top: 40px;
+    padding-left: 30px;
+    height: 88vh;
+    /* width: 70%;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto; */
+    scroll-behavior: smooth;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: visible;
+    line-height: 2.5rem;
 }
 
 .navbar-brand {
@@ -17,4 +77,92 @@
     font-size: 1rem;
     font-family: monospace;
     font-weight: bold;
+}
+
+.side-bar-link {
+    display: block;
+    text-decoration: none;
+    color: grey;
+    /* background-color: lightgreen; */
+    padding: 6px;
+    padding-right: 35px;
+    border-radius: 5px;
+    /* margin-bottom: 12px; */
+}
+
+.side-bar-link:hover {
+    background-color: rgba(211, 211, 211, 0.363);
+    color: black;
+    transition: 0.5s all ease-in-out;
+}
+
+.sample-project-body {
+    background-color: rgba(255, 255, 0, 0.151);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: smaller;
+}
+
+.key-section {
+    /* display: inline-block; */
+    background-color: rgba(128, 128, 128, 0.123);
+    padding: 4px 10px;
+}
+
+.api-section {
+    display: inline-block;
+    background-color: rgba(128, 128, 128, 0.123);
+    padding-left: 15px;
+}
+
+.credentials-on-top {
+    padding-top: 15px;
+    background-color: rgba(144, 238, 144, 0.192);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .doc-sidebar {
+        display: none;
+    }
+
+    .doc-main {
+        /* scroll-behavior: auto; */
+        height: max-content;
+    }
+
+    .key-section {
+        display: inline-block;
+        background-color: transparent;
+    }
+
+    .api-section {
+        background-color: transparent;
+    }
+
+    .home-container {
+        padding-bottom: 35px;
+    }
+
+    .home-brand-text {
+        font-size: xx-large;
+    }
+
+    .home-brand-text-two {
+        font-size: large;
+        font-family: monospace;
+    }
+
+    .home-brand-text-three {
+        padding-top: 25px;
+        font-weight: 500;
+        font-style: italic;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .credentials-on-top {
+        display: none;
+    }
 }

@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Documentation from './pages/Documentation';
 import Playground from './pages/Playground';
 import NotFoundPage from "./pages/NotFoundPage";
+import Pricing from './pages/Pricing'
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/documentation" element={<Documentation />} />
         <Route path="/playground" element={<Playground />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
