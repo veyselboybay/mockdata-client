@@ -53,7 +53,7 @@ const Content = () => {
                     // If there is error;<br />
                     {'{'}<br />
                     &nbsp;&nbsp;"success": <span style={{ color: 'red' }}>False</span>,<br />
-                    &nbsp;&nbsp;"msg":"Error message in a string",<br />
+                    &nbsp;&nbsp;"msg":"Error message",<br />
                     {'}'}
                 </span>
             </div>
