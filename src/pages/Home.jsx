@@ -1,8 +1,10 @@
 import React from 'react'
 import { Container, Button, Col, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
+    const navigate = useNavigate()
     return (
         <Container className='home-container'>
             <p style={{ paddingBottom: '30px' }}><span className='home-brand-text'>{"{"}"MockData"{":"}"API"{"}"}</span></p>
@@ -12,8 +14,8 @@ const Home = () => {
             <p className='home-brand-text-three'>Serving quality fake data, powered by AI.</p>
 
             <div style={{ paddingTop: '25px' }}>
-                <div className='home-button-one'>Get Started</div>
-                <div className='home-button-two'>Documentation</div>
+                <div className='home-button-one' onClick={(e) => navigate('/auth')}>Get Started</div>
+                <div className='home-button-two' onClick={(e) => navigate('/documentation')}>Documentation</div>
             </div>
 
         </Container>
