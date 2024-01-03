@@ -16,7 +16,7 @@ const Pricing = () => {
                     <p className='pricing-item-desc'> - Quality mock data.</p>
                     <p className='pricing-item-desc'> - Access to all updates.</p>
                     <p className='pricing-item-desc'> - Unlimited Support</p>
-                    <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', cursor: 'pointer', borderRadius: '5px' }} className='pricing-box-button' onClick={(e) => navigate('/auth')}>Get Started</div>
+                    <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', cursor: 'pointer', borderRadius: '5px' }} className='pricing-box-button' onClick={(e) => navigate('/register')}>Get Started</div>
                 </div>
                 <div className='pricing-box pricing-box-middle'>
                     <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', backgroundColor: 'lightblue', display: 'inline-block', padding: '0px 10px' }}>FREE <span style={{ textDecoration: 'line-through', color: 'white', fontSize: 'x-large' }}>$0</span></div>
@@ -25,16 +25,16 @@ const Pricing = () => {
                     <p className='pricing-item-desc'> - Quality mock data.</p>
                     <p className='pricing-item-desc'> - Access to all updates.</p>
                     <p className='pricing-item-desc'> - Unlimited Support</p>
-                    <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', cursor: 'pointer', borderRadius: '5px' }} className='pricing-box-button' onClick={(e) => navigate('/auth')}>Get Started</div>
+                    <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', cursor: 'pointer', borderRadius: '5px' }} className='pricing-box-button' onClick={(e) => navigate('/register')}>Get Started</div>
                 </div>
                 <div className='pricing-box'>
                     <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', display: 'inline-block', padding: '0px 10px' }}>Contact</div>
                     <div style={{ borderBottom: '1px solid black', textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', marginBottom: '10px' }}>Corporate</div>
-                    <p className='pricing-item-desc'> - 5 request per day.</p>
+                    <p className='pricing-item-desc'> - Unlimited requests.</p>
                     <p className='pricing-item-desc'> - Quality mock data.</p>
                     <p className='pricing-item-desc'> - Access to all updates.</p>
                     <p className='pricing-item-desc'> - Unlimited Support</p>
-                    <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', cursor: 'pointer', borderRadius: '5px' }} className='pricing-box-button' onClick={(e) => navigate('/auth')}>Get Started</div>
+                    <div style={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold', border: '2px solid lightblue', cursor: 'pointer', borderRadius: '5px' }} className='pricing-box-button' onClick={(e) => navigate('/register')}>Get Started</div>
                 </div>
             </div>
             <BottomNav />

@@ -17,7 +17,7 @@ const NavBar = () => {
                         <Nav.Link onClick={(e) => navigate("/pricing")}>Pricing</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link onClick={(e) => navigate("/auth")}><MdLogin /> Login</Nav.Link>
+                        <Nav.Link onClick={(e) => navigate("/login")}><MdLogin /> Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
