@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Button, Spinner } from 'react-bootstrap'
 import { FaExchangeAlt, FaInfoCircle } from "react-icons/fa";
 import BottomNav from '../components/BottomNav'
@@ -6,10 +6,12 @@ import { toast } from 'react-toastify';
 import AuthModal from '../components/AuthModal';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
 const Playground = () => {
+    const navigate = useNavigate();
     const { isLoggedIn, accessToken, apiKey } = useSelector(state => state.login);
     const [dataModel, setDataModel] = useState(null);
     const [mockData, setMockData] = useState(null);
@@ -35,19 +37,25 @@ const Playground = () => {
             setIsLoading(false)
         } catch (error) {
             // toast.error(error.response.data.msg);
+            // console.log(error)
+            if (error.response.status === 429) {
+                setIsLoading(false)
+                return toast.error(error.response.data.msg)
+            }
             toast.error('Something Went wrong, check your model.');
             setIsLoading(false)
         }
     }
+
     return (
         <Container>
             <AuthModal />
             <div className='playground-intro-text-container'>
-                <p><FaInfoCircle /> You can try out the MockDataAPI in the playground area by inputting a data model, and in return, receive a piece of simulated data that matches your model.</p>
+                <p><FaInfoCircle /> You can try the MockDataAPI in the playground area by inputting a data model, and in return, receive a piece of simulated data that matches your model.<span style={{ color: 'red' }}>You have 10 request per day limit. Make it count!</span></p>
             </div>
             <Row className='playground-row'>
                 <Col md={5}>
-                    <label htmlFor="" className='playground-box-label'>Your Data Model</label>
+                    <label htmlFor="" className='playground-box-label'>Your Data Model (Make Sure It is JSON parsable.)</label>
                     <textarea className='playground-textarea' placeholder={
                         ` - Create a data model in JSON format like example below.\n{\n
                     "id":"Integer",\n

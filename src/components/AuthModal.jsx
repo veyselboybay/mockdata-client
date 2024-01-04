@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -8,8 +8,11 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthModal = () => {
     const { isLoggedIn } = useSelector(state => state.login);
-    const [show, setShow] = useState(!isLoggedIn);
+    const [show, setShow] = useState(!(isLoggedIn || localStorage.getItem('accessToken') !== null));
     const navigate = useNavigate();
+    useEffect(() => {
+        setShow(!(isLoggedIn || localStorage.getItem('accessToken') !== null))
+    }, [localStorage.getItem('accessToken')], isLoggedIn)
     return (
         <Modal
             show={show}
