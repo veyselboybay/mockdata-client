@@ -1,10 +1,13 @@
 import { Button } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
 
 const Register = () => {
     const [form, setForm] = useState({ email: null, password: null });
     const [error, setError] = useState(null);
+    const { isLoggedIn } = useSelector(state => state.login);
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         if ((form.email === null || form.email === '') && (form.password === null || form.password === '')) {
@@ -20,6 +23,12 @@ const Register = () => {
 
         console.log(form);
     }
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate('/documentation');
+        }
+    }, [isLoggedIn])
     return (
         <div className="Auth-form-container">
             <form className="Auth-form">

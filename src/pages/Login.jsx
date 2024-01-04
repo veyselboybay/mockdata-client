@@ -1,12 +1,17 @@
 import { Button } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from '../features/LoginSlice'
 
 const Login = () => {
     const [form, setForm] = useState({ email: null, password: null });
+    const { isLoggedIn, accessToken, success, msg } = useSelector(state => state.login);
     const [error, setError] = useState(null);
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const handleSubmit = (e) => {
+        e.preventDefault();
         if ((form.email === null || form.email === '') && (form.password === null || form.password === '')) {
             return setError('Please enter all required fields!')
         }
@@ -16,10 +21,16 @@ const Login = () => {
         if (form.password === null || form.password === '') {
             return setError('Please enter your password!')
         }
-        e.preventDefault();
-
-        console.log(form);
+        dispatch(login(form))
+        if (success) {
+            setForm({ email: null, password: null })
+        }
     }
+    useEffect(() => {
+        if (isLoggedIn && accessToken !== null) {
+            navigate('/documentation');
+        }
+    }, [isLoggedIn])
     return (
         <div className="Auth-form-container">
             <form className="Auth-form">
@@ -45,8 +56,8 @@ const Login = () => {
                             onChange={(e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))}
                         />
                     </div>
-                    {error && <p className="forgot-password text-right mt-2" style={{ fontSize: 'small', color: 'red', textTransform: 'capitalize' }}>
-                        {error}
+                    {!success && <p className="forgot-password text-right mt-2" style={{ fontSize: 'small', color: 'red', textTransform: 'capitalize' }}>
+                        {msg}
                     </p>}
                     <div className="d-grid gap-2 mt-3">
                         <Button onClick={(e) => handleSubmit(e)}>Submit</Button>

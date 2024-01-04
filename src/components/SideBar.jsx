@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { HashLink } from 'react-router-hash-link'
 
 
+
 const SideBar = () => {
+
+    const { isLoggedIn, email, apiKey } = useSelector(state => state.login);
 
     return (
         <div>
@@ -13,14 +17,22 @@ const SideBar = () => {
             <HashLink smooth to='/documentation#data-model-format' className="side-bar-link">Data Model Format</HashLink>
             <HashLink smooth to='/documentation#response-type' className="side-bar-link">Response Type</HashLink>
             <HashLink smooth to='/documentation#sample-project' className="side-bar-link">Sample Project</HashLink>
-            <div className="api-key-section">
+            {isLoggedIn && <div className="api-key-section">
                 <br />
                 <hr />
                 <label htmlFor="email-section" style={{ fontWeight: 'bold' }}>Email:</label><br />
-                <p id='email-section' className="key-section">veyselboybay@outlook.com</p><br />
+                <p id='email-section' className="key-section">{email}</p><br />
                 <label htmlFor="api-section" style={{ fontWeight: 'bold' }}>Api Key:</label><br />
-                <p id='api-section' className="api-section">a4b8ad3f-611f-4c32-b82e-813523ad8e97</p>
-            </div>
+                <p id='api-section' className="api-section">{apiKey}</p>
+            </div>}
+            {!isLoggedIn && <div className="api-key-section">
+                <br />
+                <hr />
+                <label htmlFor="email-section" style={{ fontWeight: 'bold' }}>Email:</label><br />
+                <p id='email-section' className="key-section">Please Login</p><br />
+                <label htmlFor="api-section" style={{ fontWeight: 'bold' }}>Api Key:</label><br />
+                <p id='api-section' className="api-section" style={{ width: '100%', padding: '3px 7px' }}>Please Login for api key</p>
+            </div>}
         </div>
     )
 }

@@ -1,13 +1,15 @@
 import React from 'react'
 
 import Credentials from "../components/Credentials";
+import { useSelector } from 'react-redux';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Content = () => {
+    const { isLoggedIn } = useSelector(state => state.login);
     return (
         <>
-            <Credentials />
+            {isLoggedIn && <Credentials />}
             <h3 id='introduction' style={{ textAlign: 'center' }}>Introduction</h3>
             <br /><p style={{ fontWeight: '500' }}>Welcome to the Mock Data API documentation.</p>
             <p>It's hard to put together a <span style={{ textDecoration: 'underline' }}>meaningful UI prototypes</span> without a <span style={{ color: 'green', fontWeight: '500' }}>dataset that fits into your data models</span>. We are here to make your life easier.</p>

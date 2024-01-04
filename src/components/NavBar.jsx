@@ -2,9 +2,13 @@ import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { MdLogin } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, setCredentials } from '../features/LoginSlice'
 
 const NavBar = () => {
+    const { isLoggedIn } = useSelector(state => state.login);
     const navigate = useNavigate()
+    const dispatch = useDispatch();
     return (
         <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" style={{ borderBottom: '1px solid green' }}>
             <Container>
@@ -17,7 +21,7 @@ const NavBar = () => {
                         <Nav.Link onClick={(e) => navigate("/pricing")}>Pricing</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link onClick={(e) => navigate("/login")}><MdLogin /> Login</Nav.Link>
+                        <Nav.Link onClick={isLoggedIn ? (e) => dispatch(logout()) : (e) => navigate("/login")}><MdLogin /> {isLoggedIn ? 'Logout' : 'Login'}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

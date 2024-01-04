@@ -3,9 +3,13 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { FaExchangeAlt, FaInfoCircle } from "react-icons/fa";
 import BottomNav from '../components/BottomNav'
 import { toast } from 'react-toastify';
+import AuthModal from '../components/AuthModal';
+import { useSelector } from 'react-redux';
 const Playground = () => {
+    const { isLoggedIn } = useSelector(state => state.login);
     return (
         <Container>
+            <AuthModal />
             <div className='playground-intro-text-container'>
                 <p><FaInfoCircle /> You can try out the MockDataAPI in the playground area by inputting a data model, and in return, receive a piece of simulated data that matches your model.</p>
             </div>

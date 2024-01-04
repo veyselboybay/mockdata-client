@@ -9,6 +9,7 @@ import Register from './pages/Register'
 import NavBar from "./components/NavBar";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import AuthVerify from "../utils/AuthVerify";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <AuthVerify />
     </>
   )
 }
