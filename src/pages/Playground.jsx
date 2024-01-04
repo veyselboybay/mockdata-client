@@ -38,7 +38,7 @@ const Playground = () => {
         } catch (error) {
             // toast.error(error.response.data.msg);
             // console.log(error)
-            if (error.response.status === 429) {
+            if (error.response && error.response.status && error.response.status === 429) {
                 setIsLoading(false)
                 return toast.error(error.response.data.msg)
             }
