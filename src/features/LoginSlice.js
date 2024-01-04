@@ -11,6 +11,14 @@ export const login = createAsyncThunk('auth/login', async (loginData, thunkApi) 
         return thunkApi.rejectWithValue(error.response.data);
     }
 })
+export const register = createAsyncThunk('auth/register', async (registerData, thunkApi) => {
+    try {
+        const res = await axios.post(base_url + '/api/v1/register', registerData);
+        return res.data;
+    } catch (error) {
+        return thunkApi.rejectWithValue(error.response.data);
+    }
+})
 
 const initialState = {
     isLoading: false,
@@ -19,7 +27,9 @@ const initialState = {
     apiKey: null,
     accessToken: null,
     success: null,
-    msg:null
+    msg: null,
+    registerSuccess: null,
+    registerMsg: null
 }
 
 
@@ -65,6 +75,16 @@ const loginSlice = createSlice({
             state.isLoading = false;
             state.success = false;
             state.msg = action.payload.msg;
+        }).addCase(register.pending, (state) => {
+            state.isLoading = true;
+        }).addCase(register.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.registerSuccess = true;
+            state.registerMsg = action.payload.msg;
+        }).addCase(register.rejected, (state, action) => {
+            state.isLoading = false;
+            state.registerSuccess = false;
+            state.registerMsg = action.payload.msg;
         })
     }
 })
